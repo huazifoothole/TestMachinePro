@@ -1,0 +1,198 @@
+#include "socketthread.h"
+
+
+
+typedef struct Send64Info{
+int cmdType;
+char biosStr[20];
+char info[40];
+}send64info;
+
+SocketThread::SocketThread() :
+   QThread()
+{
+     tcpClient = new QTcpSocket(this);
+     sendMesg2();
+       // clientSocket();
+
+      //sendinfo_reader prtsendinfo_reader;
+      //prtsendinfo_reader.dev_type=PRINTER;
+
+      sendflag =0;
+
+
+}
+
+SocketThread::~SocketThread()
+{
+
+}
+
+int SocketThread::clientSocket()
+{   
+     tcpClient->connectToHost("192.168.0.12",9991);
+     qDebug("connect State1:%d\n",tcpClient->state());   // State: 2; 2代表ConnectingState，正确的应该为3（ConnectedState）
+     const int Timeout=2*1000;
+     if(!tcpClient->waitForConnected(Timeout))
+    {
+        qDebug("timeout\n");
+        return false;
+    }
+    qDebug("connect State2:%d\n",tcpClient->state());
+    connect(tcpClient,SIGNAL(readyRead()),this,SLOT(readMesg()));
+    sendMesg2();
+
+   // connect(mSocket,SIGNAL(readyRead()),this,SLOT(read()));
+   // connect(mSocket,SIGNAL(disconnected()),this,SLOT(disConnect()));return(true);
+ }
+
+void SocketThread::sendMesg1()
+{
+    char mbinfo[4096]={0};
+    QString tmpstr = mbinfo;
+    QString biosVer,mainUuid;
+  /* if(hwinfoquery->GetMainboardInfo(mbinfo, sizeof(mbinfo)))//获取bios 主板信息
+          {
+
+              QStringList tmpList = tmpstr.split('\n');
+
+              for(int i=0; i<tmpList.size(); i++)
+              {
+                  //qDebug()<<tmpList.at(i);
+                  QStringList list2;
+                  list2 = tmpList.at(i).split('=');
+
+                                  if(list2.size() == 2 && list2.at(0) == "BIOSVersion")
+                                  {
+                                         // showText += tr("BIOS版本 = ") + list2.at(1) + "\n";
+                                      biosVer=list2.at(1);
+                                      qDebug("BIOS版本 =%s",biosVer.toLatin1().data());
+                                  }
+                                  if(list2.size() == 2 && list2.at(0) == "UUID")
+                                  {
+                                          //showText += tr("主板产品UUID = ") + list2.at(1) + "\n\n";
+                                      mainUuid=list2.at(1);
+                                      qDebug("主板产品UUID = %s",mainUuid.toLatin1().data());
+                                  }
+              }
+          }
+   else {
+           qDebug("GetMainboardInfo false\n");
+            }*/
+
+
+ CMD_TYPE cmdType;
+   // QByteArray buff;
+
+    send64info buff;
+    //char sendbuff[64] = {0};
+    memset(&buff,0,sizeof(buff));
+    buff.cmdType = 1;
+    strcpy(buff.biosStr,"hello");
+
+
+   qDebug("buffsize is %d\n ",sizeof(buff));
+
+
+    tcpClient->write((char*)&buff,sizeof(buff));
+
+
+}
+
+void SocketThread::readMesg()
+{
+    qDebug("it is readMesg\n");
+    qDebug("recive size is %d\n",tcpClient->bytesAvailable());
+
+
+    info.resize(64);
+    qDebug("qba1 size is %d\n",info.size());
+    info =  tcpClient->readAll();
+    qDebug("qba2 size is %d\n",info.size());
+    // info +=tcpClient->readLine();
+     qDebug()<<info;
+    QString ss=QVariant(info).toString();
+    qDebug("ss=%s\n",ss.toLatin1().data());
+           DevConf  devconf;
+           qDebug("devconf1 size is %d\n",sizeof(devconf));
+           memset(&devconf , 0, sizeof(devconf));
+           memcpy(&devconf,info,sizeof(devconf));
+       qDebug("reboot time is %d\n",devconf.reboot_time);
+       qDebug("image_time is %d\n",devconf.img_time);
+
+
+}
+
+void SocketThread::sendMesg2()
+{
+    tcpClient->connectToHost("192.168.0.12",9992);
+    const int Timeout=2*1000;
+    if(!tcpClient->waitForConnected(Timeout))
+   {
+       qDebug("timeout\n");
+       return;
+   }
+    qDebug("connect State4:%d\n",tcpClient->state()); // State: 2; 2代表ConnectingState，正确的应该为3（ConnectedState）
+   SendInfo sendinfo_reader,sendinfo_monitor;
+    ReaderReadInfo readerInfo;
+    MonitorReadInfo monitorInfo;
+
+    memset(&sendinfo_reader,0,sizeof(sendinfo_reader));
+    memset(&readerInfo,0,sizeof(readerInfo));
+    memset(&monitorInfo,0,sizeof(monitorInfo));
+
+    /**reader_info阅读器填充信息**/
+    sendinfo_reader.dev_type =  READER;
+    sendinfo_reader.dev_sta = STA_NORMAL;
+    sendinfo_reader.count_info.error_count = 1;
+    sendinfo_reader.count_info.test_count = 14;
+    sendinfo_reader.count_info.acc_error = 0;
+    QDateTime  time=QDateTime::currentDateTime();
+    QString str=time.toString("yyyy-MM-dd hh:mm:ss");
+    qDebug("time is %s\n",str.toLatin1().data());
+    strcpy(sendinfo_reader.time_str,str.toLatin1().data());
+
+     strcpy(readerInfo.har_ver,"3.14159262333");
+     strcpy(readerInfo.s_version.szDateTime,"2013-5-29");
+     strcpy(readerInfo.s_version.szVersion,"3.400");
+     strcpy(readerInfo.s_version.szDescription,"it is reader's description");
+
+     /**错误信息**/
+     strcpy(sendinfo_reader.error_info,"no reader");
+
+     /**主板信息**/
+     sendinfo_monitor.dev_type = MONITOR;
+     sendinfo_monitor.dev_sta = STA_NORMAL;
+     sendinfo_monitor.count_info.error_count =0;
+     sendinfo_monitor.count_info.test_count = 1;
+     sendinfo_monitor.count_info.acc_error = 1;
+     time=QDateTime::currentDateTime();
+     str=time.toString("yyyy-MM-dd hh:mm:ss");
+     qDebug("time is %s\n",str.toLatin1().data());
+     strcpy(sendinfo_monitor.time_str,str.toLatin1().data());
+
+     strcpy(monitorInfo.bios_ver,"1.01");
+     strcpy(monitorInfo.s_version.szDateTime,"2001-9-11");
+     strcpy(monitorInfo.s_version.szDescription,"it is monitorInfo");
+     strcpy(monitorInfo.s_version.szVersion,"2.01");
+     monitorInfo.cpu_fan_speed = 9011;
+     monitorInfo.sys_fan_speed = 8920;
+     monitorInfo.cpu_temp = 51 ;
+     monitorInfo.sys_temp = 43 ;
+     strcpy(monitorInfo.monitor_id,"2011-11-11-11");
+
+
+
+     memcpy(sendinfo_monitor.read_info,&monitorInfo,sizeof(monitorInfo));
+     memcpy(sendinfo_reader.read_info,&readerInfo,sizeof(readerInfo));
+     qDebug("sendinfo_reader.read_info = %s\n",sendinfo_reader.read_info);
+
+        tcpClient->write((char*)&sendinfo_reader,sizeof(sendinfo_reader));
+        sleep(1);
+        tcpClient->write((char*)&sendinfo_monitor,sizeof(sendinfo_monitor));
+     // qDebug("it is sendmesg2\n");
+
+}
+
+
+

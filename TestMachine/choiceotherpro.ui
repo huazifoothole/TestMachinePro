@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>choiceOtherPro</class>
+ <widget class="QDialog" name="choiceOtherPro">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>821</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>请选择需要的程序</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_guide">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>110</y>
+     <width>161</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>市场演示程序（F3）</string>
+   </property>
+   <property name="shortcut">
+    <string>F3</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_kaoji">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>110</y>
+     <width>161</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>烤机程序（F2）</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_sc">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>110</y>
+     <width>161</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>生产测试程序（F1）</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>pushButton_sc</tabstop>
+  <tabstop>pushButton_kaoji</tabstop>
+  <tabstop>pushButton_guide</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

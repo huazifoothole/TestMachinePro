@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/connect.png</file>
+        <file>images/connect2.png</file>
+        <file>images/changePro_pressed.png</file>
+        <file>images/changePro_checked.png</file>
+        <file>images/changePro.png</file>
+        <file>images/shutdown_pressed.png</file>
+        <file>images/shutdown_checked.png</file>
+        <file>images/shutdown.png</file>
+        <file>images/reboot_pressed.png</file>
+        <file>images/reboot_checked.png</file>
+        <file>images/reboot.png</file>
+        <file>images/exit_pressed.png</file>
+        <file>images/exit_checked.png</file>
+        <file>images/exit.png</file>
+    </qresource>
+</RCC>

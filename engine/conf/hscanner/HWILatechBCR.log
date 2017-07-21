@@ -1,0 +1,55 @@
+BCR/3.06.040LT/2.004
+
+130225-08:47:55 	BCRStopScan() 	2005---operate time out 	 
+130225-09:00:28 	BCRStopScan() 	2005---operate time out 	 
+130226-04:07:08 	BCRScanIsComplete() 	2005---operate time out 	 
+130226-04:07:08 	BCRStopScan() 	2005---operate time out 	 
+130226-04:07:51 	BCRScanIsComplete() 	2005---operate time out 	 
+130226-04:07:51 	BCRStopScan() 	2005---operate time out 	 
+130226-06:44:34 	BCRStopScan() 	2005---operate time out 	 
+130226-08:45:20 	BCRScanIsComplete() 	2005---operate time out 	 
+130226-08:45:21 	BCRStopScan() 	2005---operate time out 	 
+020107-19:24:39 	BCRScanIsComplete() 	2005---operate time out 	 
+020107-19:24:39 	BCRStopScan() 	2005---operate time out 	 
+130113-23:49:19 	BCRScanIsComplete() 	2001---can not find scanner 	BCR not open.
+130113-23:49:19 	BCRScanIsComplete() 	2001---can not find scanner 	BCR not open.
+130113-23:49:21 	BCRScanIsComplete() 	2005---operate time out 	 
+130113-23:49:21 	BCRAimOn() 	2500---other error 	operating failed
+130113-23:51:56 	BCRScanIsComplete() 	2001---can not find scanner 	BCR not open.
+130113-23:51:56 	BCRScanIsComplete() 	2001---can not find scanner 	BCR not open.
+130113-23:51:58 	BCRScanIsComplete() 	2005---operate time out 	 
+130113-23:51:58 	BCRAimOn() 	2500---other error 	operating failed
+130113-23:52:00 	BCRScanIsComplete() 	2001---can not find scanner 	BCR not open.
+130113-23:52:01 	BCRScanIsComplete() 	2001---can not find scanner 	BCR not open.
+130113-23:52:02 	BCRScanIsComplete() 	2005---operate time out 	 
+130113-23:52:02 	BCRAimOn() 	2500---other error 	operating failed
+130114-01:37:19 	BCRScanIsComplete() 	2001---can not find scanner 	BCR not open.
+130114-01:37:19 	BCRScanIsComplete() 	2001---can not find scanner 	BCR not open.
+130114-01:37:22 	GetHWInfomation(0xbf91ec60, 4096) 	2005---operate time out 	 
+130114-01:37:22 	BCRScanIsComplete() 	2005---operate time out 	 
+130114-18:58:22 	BCRGetTicketInfo(0xb28a6d6c, 1024) 	2005---operate time out 	 
+130114-18:58:25 	BCRGetTicketInfo(0xb28a6d6c, 1024) 	2005---operate time out 	 
+130114-18:58:28 	BCRGetTicketInfo(0xb28a6d6c, 1024) 	2005---operate time out 	 
+130114-18:58:31 	BCRGetTicketInfo(0xb28a6d6c, 1024) 	2005---operate time out 	 
+130114-18:58:34 	BCRGetTicketInfo(0xb28a6d6c, 1024) 	2005---operate time out 	 
+130114-18:58:37 	BCRGetTicketInfo(0xb28a6d6c, 1024) 	2005---operate time out 	 
+130114-18:58:40 	BCRGetTicketInfo(0xb28a6d6c, 1024) 	2005---operate time out 	 
+130114-18:58:43 	BCRGetTicketInfo(0xb28a6d6c, 1024) 	2005---operate time out 	 
+130114-18:58:46 	BCRGetTicketInfo(0xb28a6d6c, 1024) 	2005---operate time out 	 
+130114-19:00:57 	BCRScanIsComplete() 	2005---operate time out 	 
+130114-19:00:57 	BCRStopScan() 	2005---operate time out 	 
+130114-19:12:02 	BCRScanIsComplete() 	2005---operate time out 	 
+130114-19:12:02 	BCRStopScan() 	2005---operate time out 	 
+130114-19:18:38 	BCRScanIsComplete() 	2005---operate time out 	 
+130114-19:18:39 	BCRStopScan() 	2005---operate time out 	 
+130114-19:47:34 	BCRScanIsComplete() 	2005---operate time out 	 
+130114-19:47:34 	BCRStopScan() 	2005---operate time out 	 
+130115-01:26:11 	BCRStartScan() 	2005---operate time out 	 
+130115-01:26:11 	BCRStopScan() 	2005---operate time out 	 
+130115-01:34:50 	BCRStartScan() 	2005---operate time out 	 
+130115-01:34:50 	BCRStopScan() 	2005---operate time out 	 
+130115-01:35:20 	BCRStopScan() 	2005---operate time out 	 
+130115-17:45:25 	BCRStopScan() 	2005---operate time out 	 
+130115-18:12:26 	BCRScanIsComplete() 	2005---operate time out 	 
+130115-18:12:26 	BCRStopScan() 	2005---operate time out 	 
+130116-18:09:40 	BCRStopScan() 	2005---operate time out 	 

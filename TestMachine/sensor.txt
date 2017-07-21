@@ -1,0 +1,30 @@
+coretemp-isa-0000
+Adapter: ISA adapter
+Core 0:       +29.0°C  (high = +105.0°C, crit = +105.0°C)
+
+coretemp-isa-0001
+Adapter: ISA adapter
+Core 1:       +27.0°C  (high = +105.0°C, crit = +105.0°C)
+
+w83627dhg-isa-0a10
+Adapter: ISA adapter
+Vcore:        +0.89 V  (min =  +0.00 V, max =  +1.74 V)
+in1:          +1.60 V  (min =  +1.22 V, max =  +1.54 V)  ALARM
+AVCC:         +3.34 V  (min =  +2.98 V, max =  +3.63 V)
++3.3V:        +3.34 V  (min =  +2.98 V, max =  +3.63 V)
+in4:          +1.14 V  (min =  +0.02 V, max =  +0.00 V)  ALARM
+in5:          +1.78 V  (min =  +0.06 V, max =  +0.29 V)  ALARM
+in6:          +1.17 V  (min =  +0.26 V, max =  +1.60 V)
+3VSB:         +3.34 V  (min =  +2.98 V, max =  +3.63 V)
+Vbat:         +3.23 V  (min =  +2.70 V, max =  +3.30 V)
+fan1:           0 RPM  (min = 1054 RPM, div = 128)  ALARM
+fan2:           0 RPM  (min = 10546 RPM, div = 128)  ALARM
+fan3:        9375 RPM  (min = 24107 RPM, div = 8)  ALARM
+fan4:           0 RPM  (min = 10546 RPM, div = 128)  ALARM
+fan5:           0 RPM  (min = 5273 RPM, div = 128)  ALARM
+temp1:        +45.0°C  (high = +32.0°C, hyst = -123.0°C)  ALARM  sensor = thermistor
+temp2:        +40.0°C  (high = +80.0°C, hyst = +75.0°C)  sensor = diode
+temp3:        +37.0°C  (high = +80.0°C, hyst = +75.0°C)  sensor = thermistor
+cpu0_vid:    +0.000 V
+
+每隔一定时间采集温度及转速，存入sqlite中，qt去读取sqlite中的数据
